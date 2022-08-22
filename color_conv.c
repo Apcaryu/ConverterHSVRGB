@@ -4,7 +4,46 @@ t_rgb	hsv_to_rgb(t_hsv hsv_color)
 {}
 
 t_hsv	rgb_to_hsv(t_rgb rgb_color)
-{}
+{
+	t_hsv color_out;
+	unsigned char	max;
+	unsigned char	min;
+	unsigned char	diff;
+
+	if(rgb_color.r >= rgb_color.g && rgb_color.r >= rgb_color.b)
+		max = rgb_color.r;
+	else if (rgb_color.g >= rgb_color.r && rgb_color.g >= rgb_color.b)
+		max = rgb_color.g;
+	else
+		max = rgb_color.b;
+	
+	if(rgb_color.r <= rgb_color.g && rgb_color.r <= rgb_color.b)
+		min = rgb_color.r;
+	else if (rgb_color.g <= rgb_color.r && rgb_color.g <= rgb_color.b)
+		min = rgb_color.g;
+	else
+		min = rgb_color.b;
+	
+	diff = max - min;
+
+	color_out.v = max/255;
+
+	if (max > 0)
+		color_out.s = 1 - min / max;
+	else
+		color_out.s = 0;
+	
+	if (max == 0 && min == 0)
+		color_out.h = 0;
+	else if (max == rgb_color.r)
+		color_out.h = (60 * ((rgb_color.g - rgb_color.b) / diff) + 360) % 360;
+	else if (max == rgb_color.g)
+		color_out.h = (60 * ((rgb_color.b - rgb_color.r) / diff) + 120) % 360;
+	else if (max == rgb_color.b)
+		color_out.h = (60 * ((rgb_color.r - rgb_color.g) / diff) + 240) % 360;
+	
+	return(color_out);
+}
 
 int		rgb_to_int(t_rgb rgb_color)
 {
