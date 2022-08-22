@@ -1,13 +1,14 @@
 #include "color_conv.h"
-//#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	int	color;
 	t_rgb rgb_color;
 	t_hsv hsv_color;
-
-	color = 0xC80BE0;
+    color = (int)strtol(argv[1], NULL, 0);
+	//color = 0xC90BE0;
 	rgb_color = int_to_rgb(color);
 	hsv_color = rgb_to_hsv(rgb_color);
 	printf("r: %u | g: %u | b: %u\n", rgb_color.r, rgb_color.g, rgb_color.b);
