@@ -13,7 +13,7 @@ t_rgb	hsv_to_rgb(t_hsv hsv_color)
 	if (z < 0)
 		z = z * z;
 
-	if (hsv_color.h == 0 && hsv_color.h < 60)
+	if (0 <= hsv_color.h && hsv_color.h < 60)
 	{
 		color_out.r = max;
 		color_out.g = z + min;
