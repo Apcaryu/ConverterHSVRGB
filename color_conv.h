@@ -1,6 +1,7 @@
 #ifndef COLOR_CONV_H
 # define COLOR_CONV_H
 # include <math.h>
+# include <stdio.h>
 typedef struct s_hsv
 {
 	int		h;

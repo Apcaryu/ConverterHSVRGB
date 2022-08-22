@@ -6,12 +6,11 @@ t_rgb	hsv_to_rgb(t_hsv hsv_color)
 	double	max;
 	double	min;
 	double	z;
+    double tmp;
 
 	max = 255 * hsv_color.v;
 	min = max * (1 - hsv_color.s);
-	z = (max - min) * (1 - ((hsv_color.h / 60) % 2 - 1));
-	if (z < 0)
-		z = z * z;
+	z = (max - min) * (1 - fabs(fmod(hsv_color.h / 60.0, 2) - 1));
 
 	if (0 <= hsv_color.h && hsv_color.h < 60)
 	{
