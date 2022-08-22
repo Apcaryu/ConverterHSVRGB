@@ -1,0 +1,22 @@
+#ifndef COLOR_CONV_H
+# define COLOR_CONV_H
+
+typedef struct s_hsv
+{
+	int	h;
+	int	s;
+	int	v;
+}	t_hsv;
+
+typedef struct s_rgb
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}	t_rgb;
+
+t_rgb	hsv_to_rgb(t_hsv hsv_color);
+t_hsv	rgb_to_hsv(t_rgb rgb_color);
+int	rgb_to_int(t_rgb rgb_color);
+
+#endif
