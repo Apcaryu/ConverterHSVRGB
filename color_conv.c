@@ -7,7 +7,12 @@ t_hsv	rgb_to_hsv(t_rgb rgb_color)
 {}
 
 int		rgb_to_int(t_rgb rgb_color)
-{}
+{
+	int	color_out;
+
+	color_out = 256 * 256 * rgb_color.r + 256 * rgb_color.g + rgb_color.b;
+	return(color_out);
+}
 
 t_rgb	int_to_rgb(int int_color)
 {
