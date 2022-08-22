@@ -1,7 +1,54 @@
 #include "color_conv.h"
 
 t_rgb	hsv_to_rgb(t_hsv hsv_color)
-{}
+{
+	t_rgb	color_out;
+	double	max;
+	double	min;
+	double	z;
+
+	max = 255 * hsv_color.v;
+	min = max * (1 - hsv_color.s);
+	z = (max - min) * (1 - ((hsv_color.h / 60) % 2 - 1));
+
+	if (hsv_color.h == 0 && hsv_color.h < 60)
+	{
+		color_out.r = max;
+		color_out.g = z + min;
+		color_out.b = min;
+	}
+	else if (60 <= hsv_color.h && hsv_color.h < 120)
+	{
+		color_out.r = z + min;
+		color_out.g = max;
+		color_out.b = min;
+	}
+	else if (120 <= hsv_color.h && hsv_color.h < 180)
+	{
+		color_out.r = min;
+		color_out.g = max;
+		color_out.b = z + min;
+	}
+	else if (180 <= hsv_color.h && hsv_color.h < 240)
+	{
+		color_out.r = min;
+		color_out.g = z + min;
+		color_out.b = max;
+	}
+	else if (240 <= hsv_color.h && hsv_color.h < 300)
+	{
+		color_out.r = z + min;
+		color_out.g = min;
+		color_out.b = max;
+	}
+	else if (300 <= hsv_color.h && hsv_color.h < 360)
+	{
+		color_out.r = max;
+		color_out.g = min;
+		color_out.b = z + min;
+	}
+	return(color_out);
+}
 
 t_hsv	rgb_to_hsv(t_rgb rgb_color)
 {
