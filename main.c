@@ -7,7 +7,7 @@ int	main(void)
 	t_rgb rgb_color;
 	t_hsv hsv_color;
 
-	color = 0xFF00FF;
+	color = 0xC80BE0;
 	rgb_color = int_to_rgb(color);
 	hsv_color = rgb_to_hsv(rgb_color);
 	printf("r: %u | g: %u | b: %u\n", rgb_color.r, rgb_color.g, rgb_color.b);

@@ -10,6 +10,8 @@ t_rgb	hsv_to_rgb(t_hsv hsv_color)
 	max = 255 * hsv_color.v;
 	min = max * (1 - hsv_color.s);
 	z = (max - min) * (1 - ((hsv_color.h / 60) % 2 - 1));
+	if (z < 0)
+		z = z * z;
 
 	if (hsv_color.h == 0 && hsv_color.h < 60)
 	{
@@ -73,21 +75,21 @@ t_hsv	rgb_to_hsv(t_rgb rgb_color)
 	
 	diff = max - min;
 
-	color_out.v = max/255;
+	color_out.v = (double)max/(double)255;
 
 	if (max > 0)
-		color_out.s = 1 - min / max;
+		color_out.s = 1.0 - (double)min / (double)max;
 	else
 		color_out.s = 0;
-	
+
 	if (max == 0 && min == 0)
 		color_out.h = 0;
 	else if (max == rgb_color.r)
-		color_out.h = (60 * ((rgb_color.g - rgb_color.b) / diff) + 360) % 360;
+		color_out.h = fmod(60 * ((double)(rgb_color.g - rgb_color.b) / (double)diff) + 360, 360);
 	else if (max == rgb_color.g)
-		color_out.h = (60 * ((rgb_color.b - rgb_color.r) / diff) + 120) % 360;
+		color_out.h = fmod(60 * ((double)(rgb_color.b - rgb_color.r) / (double)diff) + 120, 360);
 	else if (max == rgb_color.b)
-		color_out.h = (60 * ((rgb_color.r - rgb_color.g) / diff) + 240) % 360;
+		color_out.h = fmod(60 * ((double)(rgb_color.r - rgb_color.g) / (double)diff) + 240, 360);
 	
 	return(color_out);
 }
