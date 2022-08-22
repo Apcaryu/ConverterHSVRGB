@@ -17,6 +17,7 @@ typedef struct s_rgb
 
 t_rgb	hsv_to_rgb(t_hsv hsv_color);
 t_hsv	rgb_to_hsv(t_rgb rgb_color);
-int	rgb_to_int(t_rgb rgb_color);
+int		rgb_to_int(t_rgb rgb_color);
+t_rgb	int_to_rgb(int int_color);
 
 #endif
