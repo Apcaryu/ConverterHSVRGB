@@ -3,9 +3,9 @@
 # include <math.h>
 typedef struct s_hsv
 {
-	int	h;
-	int	s;
-	int	v;
+	int		h;
+	double	s;
+	double	v;
 }	t_hsv;
 
 typedef struct s_rgb
