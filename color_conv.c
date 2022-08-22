@@ -13,8 +13,8 @@ t_rgb	int_to_rgb(int int_color)
 {
 	t_rgb 			color_out;
 	
-	color_out.r = (int)(int_color / (256^2));
-	color_out.g = (int)((int_color / 256) % 256);
+	color_out.r = (int_color / (256 * 256));
+	color_out.g = ((int_color / 256) % 256);
 	color_out.b = int_color % 256;
 
 	return(color_out);

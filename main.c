@@ -7,7 +7,7 @@ int	main(void)
 	t_rgb rgb_color;
 	t_hsv hsv_color;
 
-	color = 10;
+	color = 16711935;
 	rgb_color = int_to_rgb(color);
 	printf("r: %u | g: %u | b: %u\n", rgb_color.r, rgb_color.g, rgb_color.b);
 }
